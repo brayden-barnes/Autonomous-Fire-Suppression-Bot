@@ -7,8 +7,6 @@ ECED3901
 Dalhousie University
 May 28, 2021
 
-Design Task 1
+This project uses ROS to contorl all components of a 2D autonomous robot. 
 
-Program Directory:
-----------------------------------------
-eced3901_dt1.py     #for making triangle
+The robot moves on 2 wheels propelled by bidirectional motors. Motors are activated based on path planning and SLAM algorithms. Said algorithms are based on LiDAR data, collected from the robot's surroundings in real time. The result: given a specific coordinate, the robot can navigate to it while avoiding obstacles.
