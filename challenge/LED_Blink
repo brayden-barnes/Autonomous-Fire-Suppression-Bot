@@ -1,0 +1,32 @@
+/*
+ * rosserial Subscriber Example
+ * Blinks an LED on callback
+ * Adapted from: ROSWiki
+ * Adapted by: Nikola Doelle, Tanaka Akiyama, Brayden Barnes
+ * Purpose: LED Blink for Fire Supression by ECED3901 Robots
+ * Date: July 15, 2021
+ */
+
+#include <ros.h>
+#include <std_msgs/Empty.h> //header file for message
+
+ros::NodeHandle nh; //instantiate the node handle (create publishers & subscribers)
+
+void suppress_fire( const std_msgs::Empty& toggle_msg){ 
+  digitalWrite(13, HIGH-digitalRead(13));   // blink the led
+}
+
+ros::Subscriber<std_msgs::Empty> sub("toggle_led", &suppress_fire);
+
+void setup()
+{
+  pinMode(13, OUTPUT);
+  nh.initNode();
+  nh.subscribe(sub);
+}
+
+void loop()
+{
+  nh.spinOnce();
+  delay(1);
+}
